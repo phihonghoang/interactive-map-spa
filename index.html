@@ -1,13 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>WAD2023</title>
+    <meta charset="utf-8"> <!-- utf-8 ist default, iso-8859-1 was def. in HTML4 -->
+    <title>WAD2023</title> <!-- Dokumententitel -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Leaflet library-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 </head>
 
 <body>
+    <div class="login-container" id="login-id">
+        <div class="website-name-container">
+            <h1>WAD</h1>
+        </div>
 
+        <div class="login-content-container">
+            <h2>Login</h2>
+            <form>
+                <div class="username-input-container">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="password-input-container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" id="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <!--column-->
+    <div class="main-container" id="main-id">
+        <div class="welcome-message-container">
+            <h1>Welcome</h1>
+        </div>
+
+        <!--row-->
+        <div class="main-content-container">
+            <div class="map-address-container">
+                <p>Heizkraftwerk Köpenicker Str. 60, 10179 Berlin </p>
+                <p>Heizkraftwerk Allee der Kosmonauten 26b, 12681 Berlin</p>
+                <p>Heizkraftwerk Forckenbeckstraße 3-5, 14199 Berlin</p>
+            </div>
+
+            <div id="map">
+                <script src="js/map.js"></script>
+            </div>
+        </div>
+
+        <div class="main-input-button-container">
+            <input type="button" id="add-input-button" value="Add">
+            <input type="button" id="logout-input-button" value="Logout">
+        </div>
+    </div>
+
+    <div class="add-container" id="add-id">
+
+    </div>
+
+    <div class="update-delete-container" id="update-delete-id">
+
+    </div>
 </body>
 
 </html>
