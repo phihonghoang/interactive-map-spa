@@ -17,7 +17,7 @@
 
 <body>
     <div class="login-container" id="login-id">
-        <div class="website-name-container">
+        <div class="login-project-name-container">
             <h1>WAD</h1>
         </div>
         <div class="login-content-container">
@@ -25,13 +25,13 @@
             <form>
                 <div class="username-input-container">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username-id" required>
+                    <input type="text" name="username" id="login-username-id" required>
                 </div>
                 <div class="password-input-container">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password-id" required>
+                    <input type="password" name="password" id="login-password-id" required>
                 </div>
-                <input type="submit" value="Login" id="login-button-id">
+                <input type="submit" value="Login" id="login-login-id">
             </form>
         </div>
     </div>
@@ -45,18 +45,18 @@
         </div>
         <!--row-->
         <div class="main-content-container">
-            <div class="map-address-container">
+            <div class="main-map-address-container">
                 <p>Heizkraftwerk Köpenicker Str. 60, 10179 Berlin </p>
                 <p>Heizkraftwerk Allee der Kosmonauten 26b, 12681 Berlin</p>
                 <p>Heizkraftwerk Forckenbeckstraße 3-5, 14199 Berlin</p>
             </div>
-            <div id="map">
+            <div id="main-map">
                 <script src="js/map.js"></script>
             </div>
         </div>
-        <div class="main-input-button-container">
-            <input type="button" id="add-input-button-id" value="Add">
-            <input type="button" id="logout-input-button-id" value="Logout">
+        <div class="main-input-container">
+            <input type="button" id="main-add-id" value="Add">
+            <input type="button" id="main-logout-id" value="Logout">
         </div>
     </div>
 
@@ -66,63 +66,58 @@
     <div class="add-container" id="add-id">
         <form>
             <div class="add-content-container">
-                <div class="name-input-container">
+                <div class="add-name-container">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name-input-id" required>
+                    <input type="text" name="name" id="add-name-id" required>
                 </div>
     
-                <div class="description-input-container">
+                <div class="add-description-container">
                     <label for="description">Description</label>
-                    <input type="text" name="description" id="description-input-id">
+                    <input type="text" name="description" id="add-description-id">
                 </div>
     
-                <div class="street-input-container">
+                <div class="add-street-container">
                     <label for="street">Street</label>
-                    <input type="text" name="street" id="street-input-id" required>
+                    <input type="text" name="street" id="add-street-id" required>
                 </div>
     
-                <div class="zip-input-container">
+                <div class="add-zip-container">
                     <label for="zip">Zip</label>
-                    <input type="number" name="zip" id="zip-input-id" required>
-    
+                    <input type="number" name="zip" id="add-zip-id" required>
                 </div>
                     
-                <div class="city-input-container">
+                <div class="add-city-container">
                     <label for="city">City</label>
-                    <input type="text" name="city" id="city-input-id" required>
+                    <input type="text" name="city" id="add-city-id" required>
                 </div>
                     
     
-                <div class="state-input-container">
+                <div class="add-state-container">
                     <label for="state">State</label>
-                    <input type="text" name="state" id="state-input-id" required>
+                    <input type="text" name="state" id="add-state-id" required>
                 </div>
     
-                <div class="lat-input-container">
+                <div class="add-lat-container">
                     <label for="lat">Lat</label>
-                    <input type="number" name="lat" id="lat-input-id">
+                    <input type="number" name="lat" id="add-lat-id">
                 </div>
     
     
-                <div class="lon-input-container">
+                <div class="add-lon-container">
                     <label for="lon">Lon</label>
-                    <input type="number" name="lon" id="lon-input-id">
+                    <input type="number" name="lon" id="add-lon-id">
                 </div>
             </div>
             
-            <div class="add-input-button-container">
-                <input type="submit" value="Save" id="save-input-button-id">
-                <input type="button" value="Cancel" id="cancel-input-button-id">
+            <div class="add-input-container">
+                <input type="submit" value="Save" id="add-save-id">
+                <input type="button" value="Cancel" id="add-cancel-id">
             </div>
         </form>
     </div>
 
     <br><br><br><br>
     <hr>
-
-    <div class="update-delete-container" id="update-delete-id">
-
-    </div>
 </body>
 
 </html>

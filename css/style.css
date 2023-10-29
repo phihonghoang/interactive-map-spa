@@ -33,7 +33,7 @@ label[for="username"], label[for="password"] {
 }
 
 
-#username-id, #password-id {
+#login-username-id, #login-password-id {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -41,7 +41,7 @@ label[for="username"], label[for="password"] {
     font-size: 16px;
 }
 
-#login-button-id {
+#login-login-id {
     background-color: rgb(5, 150, 5);
     color: #fff;
     border: none;
@@ -52,7 +52,7 @@ label[for="username"], label[for="password"] {
     margin-top: 10px;
 }
 
-#login-button-id:hover {
+#login-login-id:hover {
     background-color: green;
 }
 
@@ -72,24 +72,24 @@ label[for="username"], label[for="password"] {
     flex-direction: row;
 }
 
-.map-address-container {
+.main-map-address-container {
     border-radius: 10px;
     border-style: solid;
     border-color: green;
 }
 
-#map {
+#main-map {
     width: 600px;
     height: 400px;
     border-radius: 10px;
 }
 
-.main-input-button-container {
+.main-input-container {
     align-self: flex-start;
     margin-left: 210px;
 }
 
-#add-input-button-id, #logout-input-button-id {
+#main-add-id, #main-logout-id {
     background-color: rgb(5, 150, 5);
     color: #fff;
     border: none;
@@ -100,7 +100,7 @@ label[for="username"], label[for="password"] {
     margin-top: 10px;
 }
 
-#add-input-button-id:hover, #logout-input-button-id:hover {
+#main-add-id:hover, #main-logout-id:hover {
     background-color: green;
 }
 
@@ -125,10 +125,10 @@ label[for="username"], label[for="password"] {
     text-align: center;
 }
 
-.name-input-container, .description-input-container, 
-.street-input-container, .zip-input-container,
-.city-input-container, .state-input-container,
-.lat-input-container, .lon-input-container {
+.add-name-container, .add-description-container, 
+.add-street-container, .add-zip-container,
+.add-city-container, .add-state-container,
+.add-lat-container, .add-lon-container {
     margin: 15px;
     text-align: left;
 }
@@ -140,8 +140,8 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
     margin-bottom: 5px;
 }
 
-#name-input-id, #description-input-id, #street-input-id, #zip-input-id, 
-#city-input-id, #state-input-id, #lat-input-id, #lon-input-id{
+#add-name-id, #add-description-id, #add-street-id, #add-zip-id, 
+#add-city-id, #add-state-id, #add-lat-id, #add-lon-id{
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -149,7 +149,7 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
     font-size: 16px;
 }
 
-#save-input-button-id, #cancel-input-button-id {
+#add-save-id, #add-cancel-id {
     background-color: rgb(5, 150, 5);
     color: #fff;
     border: none;
@@ -160,7 +160,7 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
     margin-top: 10px;
 }
 
-#save-input-button-id:hover, #cancel-input-button-id:hover {
+#add-save-id:hover, #add-cancel-id:hover {
     background-color: green;
 }
 
