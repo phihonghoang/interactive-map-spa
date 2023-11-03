@@ -235,3 +235,10 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
 #du-update-id:hover, #du-delete-id:hover, #du-cancel-id:hover {
     background-color: green;
 }
+
+/*----------------------------------*/
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+}
