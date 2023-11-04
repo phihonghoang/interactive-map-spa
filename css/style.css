@@ -1,3 +1,13 @@
+.login-project-name-container {
+    border-style: solid;
+    border-color: rgb(48, 45, 101);
+    border-radius: 100px;
+    margin: 50px;
+    padding: 10px;
+    background-color: rgb(48, 45, 101);
+    color: white;
+}
+
 .login-container {
     font-family: Arial, sans-serif;
     display: flex;
@@ -20,7 +30,7 @@ h2 {
     background-color: #fff;
     border-radius: 10px;
     border-style: solid;
-    border-color: green;
+    border-color: rgb(48, 45, 101);
     padding-top: 35px;
     padding-right: 50px;
     padding-bottom:35px;
@@ -52,7 +62,7 @@ label[for="username"], label[for="password"] {
 }
 
 #login-login-id {
-    background-color: rgb(5, 150, 5);
+    background-color: rgb(48, 45, 101);
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -85,7 +95,7 @@ label[for="username"], label[for="password"] {
 .main-map-address-container {
     border-radius: 10px;
     border-style: solid;
-    border-color: green;
+    border-color: rgb(48, 45, 101);
 }
 
 #main-map {
@@ -99,7 +109,7 @@ label[for="username"], label[for="password"] {
 }
 
 #main-add-id, #main-logout-id {
-    background-color: rgb(5, 150, 5);
+    background-color: rgb(48, 45, 101);
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -128,7 +138,7 @@ label[for="username"], label[for="password"] {
     background-color: #fff;
     border-radius: 10px;
     border-style: solid;
-    border-color: green;
+    border-color: rgb(48, 45, 101);
     padding: 35px 50px 35px 50px;
     width: 300px;
     text-align: center;
@@ -159,7 +169,7 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
 }
 
 #add-save-id, #add-cancel-id {
-    background-color: rgb(5, 150, 5);
+    background-color: rgb(48, 45, 101);
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -188,7 +198,7 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
     background-color: #fff;
     border-radius: 10px;
     border-style: solid;
-    border-color: green;
+    border-color: rgb(48, 45, 101);
     padding: 35px 50px 35px 50px;
     width: 300px;
     text-align: center;
@@ -222,7 +232,7 @@ label[for="city"], label[for="state"], label[for="lat"], label[for="lon"] {
 }
 
 #du-update-id, #du-delete-id, #du-cancel-id {
-    background-color: rgb(5, 150, 5);
+    background-color: rgb(48, 45, 101);
     color: #fff;
     border: none;
     border-radius: 3px;
