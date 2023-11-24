@@ -5,6 +5,9 @@
     <meta charset="utf-8"> <!-- utf-8 ist default, iso-8859-1 was def. in HTML4 -->
     <title>WAD2023</title> <!-- Dokumententitel -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/login.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/add.js" defer></script>
 
     <!--Leaflet library-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -16,7 +19,7 @@
 </head>
 
 <body>
-    <div class="login-container" id="login-id">
+    <div class="login-container" id="login-container-id">
         <div class="login-project-name-container">
             <h1>WAD</h1>
         </div>
@@ -26,7 +29,7 @@
                 <h2>Login</h2>
             </div>
 
-            <form>
+            <form id="loginForm">
                 <div class="username-input-container">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="login-username-id" required>
@@ -35,15 +38,16 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="login-password-id" required>
                 </div>
-                <input type="submit" value="Login" id="login-login-id">
+                <div class="login-input-container">
+                    <input type="submit" value="Login" id="login-login-id">
+                </div>
             </form>
         </div>
     </div>
 
-    <hr>
 
     <!--column-->
-    <div class="main-container" id="main-id">
+    <div class="main-container" id="main-container-id">
         <div class="welcome-message-container">
             <h1>Welcome</h1>
         </div>
@@ -64,10 +68,9 @@
         </div>
     </div>
 
-    <hr>
 
-    <div class="add-container" id="add-id">
-        <form>
+    <div class="add-container" id="add-container-id">
+        <form id="addForm">
             <div class="add-content-container">
                 
                 <div>
@@ -124,9 +127,8 @@
         </form>
     </div>
 
-    <hr>
 
-    <div class="delete-update-container">
+    <div class="delete-update-container" id="delete-update-container-id">
         <div class="delete-update-content-container">
 
             <div>
