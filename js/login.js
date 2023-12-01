@@ -12,7 +12,7 @@ const admin = {
 const normalo = {
     username: "normalo",
     password: "password",
-    role: "normalo"
+    role: "non-admin"
 };
 
 
