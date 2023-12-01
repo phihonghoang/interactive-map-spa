@@ -9,6 +9,11 @@ const admin = {
     password: "password",
     role: "admin"
 };
+const normalo = {
+    username: "normalo",
+    password: "password",
+    role: "normalo"
+};
 
 
 const initScreensAddEventHandlers = function () {
@@ -37,23 +42,35 @@ function checkLogin(e) {
 
     if (admin.username === loginEntered && admin.password == passwordEntered) {
         userIsLoggedIn = true
-        hideLogin();
+        hideLoginAdmin();
     } else {
-        alert("Incorrect username or password!")
-        userIsLoggedIn = false;
+
+    if (normalo.username === loginEntered && normalo.password == passwordEntered) {
+	userIsLoggedIn=true
+	hideLoginNormalo();
+     } else {
+          alert("Incorrect username or password!")
+          userIsLoggedIn = false;
     }
+  }
 }
 
 function showLogin() {
-    /*
+    
     document.getElementById("login-container-id").style.display = "";
     document.getElementById("main-container-id").style.display = "none";
     document.getElementById("add-container-id").style.display = "none";
     document.getElementById("delete-update-container-id").style.display = "none";
-    */
+    
 }
 
-function hideLogin() {
+function hideLoginAdmin() {
+    document.getElementById("login-container-id").style.display = "none";
+    document.getElementById("main-container-id").style.display = "";
+    document.getElementById("add-container-id").style.display = "none";
+    document.getElementById("delete-update-container-id").style.display = "none";
+}
+function hideLoginNormalo() {
     document.getElementById("login-container-id").style.display = "none";
     document.getElementById("main-container-id").style.display = "";
     document.getElementById("add-container-id").style.display = "none";
