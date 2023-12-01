@@ -1,6 +1,4 @@
 
-// mainToAdd ohne Klammer = Die Funktion wird nicht sofort aufgerufen,
-// sondern wird als Referenz an das "onclick"-Handler übergeben.
 document.getElementById("main-add-id").onclick = mainToAdd;
 
 document.getElementById("main-logout-id").onclick = mainToLogin;

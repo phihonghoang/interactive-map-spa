@@ -8,6 +8,7 @@
     <script src="js/login.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/add.js" defer></script>
+    <script src="js/du.js" defer></script>
 
     <!--Leaflet library-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -53,13 +54,15 @@
         </div>
         <!--row-->
         <div class="main-content-container">
-            <div class="main-map-address-container">
+            <div class="main-map-address-container" id="main-map-address-container-id">
+                <!--
                 <p>Heizkraftwerk Köpenicker Str. 60, 10179 Berlin </p>
                 <p>Heizkraftwerk Allee der Kosmonauten 26b, 12681 Berlin</p>
                 <p>Heizkraftwerk Forckenbeckstraße 3-5, 14199 Berlin</p>
+                -->
             </div>
             <div id="main-map">
-                <script src="js/map.js"></script>
+                <script src="js/map.js" defer></script>
             </div>
         </div>
         <div class="main-input-container">
@@ -135,54 +138,56 @@
                 <h2>Delete/Update</h2>
             </div>
 
-            <div class="du-name-container">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="du-name-id" value="Heizkraftwerk">
+            <form id="duForm">
+                <div class="du-name-container">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="du-name-id">
+                </div>
+    
+                <div class="du-description-container">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="du-description-id">
+                </div>
+    
+                <div class="du-street-container">
+                    <label for="street">Street</label>
+                    <input type="text" name="street" id="du-street-id">
+                </div>
+    
+                <div class="du-zip-container">
+                    <label for="zip">Zip</label>
+                    <input type="number" name="zip" id="du-zip-id">
+                </div>
+                    
+                <div class="du-city-container">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="du-city-id">
+                </div>
+                    
+    
+                <div class="du-state-container">
+                    <label for="state">State</label>
+                    <input type="text" name="state" id="du-state-id">
+                </div>
+    
+                <div class="du-lat-container">
+                    <label for="lat">Lat</label>
+                    <input type="number" name="lat" id="du-lat-id">
+                </div>
+    
+    
+                <div class="du-lon-container">
+                    <label for="lon">Lon</label>
+                    <input type="number" name="lon" id="du-lon-id">
+                </div>
             </div>
-
-            <div class="du-description-container">
-                <label for="description">Description</label>
-                <input type="text" name="description" id="du-description-id" value="Heizkraftwerk">
+            
+            <div class="du-input-container">
+                <input type="submit" value="Update" id="du-update-id">
+                <input type="submit" value="Delete" id="du-delete-id">
+                <input type="button" value="Cancel" id="du-cancel-id">
             </div>
-
-            <div class="du-street-container">
-                <label for="street">Street</label>
-                <input type="text" name="street" id="du-street-id" value="Köpenicker Str. 60">
-            </div>
-
-            <div class="du-zip-container">
-                <label for="zip">Zip</label>
-                <input type="number" name="zip" id="du-zip-id" value="10179">
-            </div>
-                
-            <div class="du-city-container">
-                <label for="city">City</label>
-                <input type="text" name="city" id="du-city-id" value="Berlin">
-            </div>
-                
-
-            <div class="du-state-container">
-                <label for="state">State</label>
-                <input type="text" name="state" id="du-state-id" value="Berlin/Brandenburg">
-            </div>
-
-            <div class="du-lat-container">
-                <label for="lat">Lat</label>
-                <input type="number" name="lat" id="du-lat-id" value="52.51071">
-            </div>
-
-
-            <div class="du-lon-container">
-                <label for="lon">Lon</label>
-                <input type="number" name="lon" id="du-lon-id" value="13.42083">
-            </div>
-        </div>
-        
-        <div class="du-input-container">
-            <input type="button" value="Update" id="du-update-id">
-            <input type="button" value="Delete" id="du-delete-id">
-            <input type="button" value="Cancel" id="du-cancel-id">
-        </div>
+        </form>
     </div>
     
     <footer class="footer-container">
