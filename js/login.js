@@ -68,8 +68,8 @@ function hardCodedAddresses() {
         zip: "10179",
         city: "Berlin",
         state: "Berlin",
-        lat: "52.51071",
-        lon: "13.42083",
+        lat: 52.51071,
+        lon: 13.42083
     };
 
     hkw2 = {
@@ -79,8 +79,8 @@ function hardCodedAddresses() {
         zip: "12681",
         city: "Berlin",
         state: "Berlin",
-        lat: "52.52580",
-        lon: "13.52354",
+        lat: 52.52580,
+        lon: 13.52354
     };
 
     hkw3 = {
@@ -90,29 +90,16 @@ function hardCodedAddresses() {
         zip: "14199",
         city: "Berlin",
         state: "Berlin",
-        lat: "52.48174",
-        lon: "13.29249",
+        lat: 52.48174,
+        lon: 13.29249
     };
 
     let hkwList = [hkw1, hkw2, hkw3];
     
     hkwList.forEach((value) => {
-        /*
-        let hca = document.createElement("div");
-        hca.innerHTML = value.name + " " + value.description + " " + value.street + " " + value.zip + " " + value.city + " " + value.state + "<br><br>";
-
-        hca.addEventListener("click", function(){
-            addToDu(value.name,value.description,value.street,value.zip,value.city,value.state,value.lat,value.lon);
-        });
-
-        document.getElementById("main-map-address-container-id").appendChild(hca);
-        */
-
         addAddressToContainer(value.name,value.description,value.street,value.zip,value.city,value.state,value.lat,value.lon);
     });
 }
-
-
 
 window.onload = initScreensAddEventHandlers; 
 

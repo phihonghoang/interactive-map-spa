@@ -1,4 +1,6 @@
 
+let selectedAddress;
+
 document.getElementById("addForm").onsubmit = addAddress;
 
 document.getElementById("add-cancel-id").onclick = addToMain;
@@ -17,20 +19,6 @@ function addAddress(e) {
     let lat = document.getElementById("add-lat-id").value;
     let lon = document.getElementById("add-lon-id").value;
 
-    /*
-    // parameter = name of the element to be created.
-    let address = document.createElement("div");
-    address.innerHTML = name + " " + description + " " + street + " " + zip + " " + city + " " + state + "<br><br>";
-
-    // the anonymous function acts as a wrapper.
-    // this enables the expected delay in the execution of the function until the event.
-    address.addEventListener("click", function(){
-        addToDu(name,description,street,zip,city,state,lat,lon);
-    });
-
-    document.getElementById("main-map-address-container-id").appendChild(address);
-    */
-
     addAddressToContainer(name,description,street,zip,city,state,lat,lon);
 
     emptyAddAddress();
@@ -40,12 +28,17 @@ function addAddress(e) {
 function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     // parameter = name of the element to be created.
     let address = document.createElement("div");
-    address.innerHTML = name + " " + description + " " + street + " " + zip + " " + city + " " + state + "<br><br>";
+    address.innerHTML = name + " " + description + " " + 
+                        street + " " + zip + " " + city + " " +
+                        state + " " + lat + " " + lon + "<br><br>";
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
     address.addEventListener("click", function(){
         addToDu(name,description,street,zip,city,state,lat,lon);
+
+        // chosen address will be assigned to selectedAddress
+        selectedAddress = address;
     });
 
     document.getElementById("main-map-address-container-id").appendChild(address);
@@ -77,6 +70,7 @@ function addToDu(name,description,street,zip,city,state,lat,lon) {
     document.getElementById("main-container-id").style.display = "none";
     document.getElementById("add-container-id").style.display = "none";
     document.getElementById("delete-update-container-id").style.display = "";
+
 }
 
 function addToMain() {
