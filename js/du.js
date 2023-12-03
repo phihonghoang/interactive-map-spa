@@ -44,12 +44,6 @@ function duUpdate() {
     duToMain();
 }
 
-/*
-function hcaUpdate(name,description,street,zip,city,state,lat,lon) {
-    
-}
-*/
-
 function duDelete() {
     let lat = selectedAddress.getAttribute('data-lat');
     let lon = selectedAddress.getAttribute('data-lon');

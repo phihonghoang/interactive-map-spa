@@ -65,7 +65,7 @@ function hardCodedAddresses() {
         street: "Köpenicker Str. 60",
         zip: "10179",
         city: "Berlin",
-        state: "Berlin",
+        state: "Germany",
         lat: 52.51071,
         lon: 13.42083
     };
@@ -76,7 +76,7 @@ function hardCodedAddresses() {
         street: "Allee der Kosmonauten 26b",
         zip: 12681,
         city: "Berlin",
-        state: "Berlin",
+        state: "Germany",
         lat: 52.52580,
         lon: 13.52354
     };
@@ -87,7 +87,7 @@ function hardCodedAddresses() {
         street: "Forckenbeckstraße 3-5",
         zip: 14199,
         city: "Berlin",
-        state: "Berlin",
+        state: "Germany",
         lat: 52.48174,
         lon: 13.29249
     };

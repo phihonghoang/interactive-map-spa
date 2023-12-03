@@ -42,8 +42,13 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     address.setAttribute('data-state', state);
     address.setAttribute('data-lat', lat);
     address.setAttribute('data-lon', lon);
-    
-    initMapMarker(lat, lon);
+
+    // doesn't request for geo coordination, if lat and lon are given.
+    if (lat != "" && lon != "") {
+        initMapMarker(lat,lon);
+    } else {
+        reqGeoCor(street,zip,city,state);
+    }
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
