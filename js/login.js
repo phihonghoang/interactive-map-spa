@@ -19,8 +19,6 @@ const initScreensAddEventHandlers = function () {
     }
 
     hardCodedAddresses();
-    // load map markers after values for hkw1,hkw2 and hkw3 are set.
-    initMapMarkers();
 
     // checkLogin without () = function is only called when the event takes place.
     document.getElementById("loginForm").onsubmit = checkLogin;
@@ -65,7 +63,7 @@ function hardCodedAddresses() {
         name: "Heizkraftwerk",
         description: "",
         street: "Köpenicker Str. 60",
-        zip: 10179,
+        zip: "10179",
         city: "Berlin",
         state: "Berlin",
         lat: 52.51071,

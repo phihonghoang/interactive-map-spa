@@ -8,7 +8,6 @@ document.getElementById("duForm").addEventListener("submit", function(e) {
     
     if(e.submitter.id === "du-delete-id") {
         duDelete();
-        console.log("Perfekt!")
     }
 });
 
@@ -16,6 +15,8 @@ document.getElementById("du-cancel-id").onclick = duToMain;
 
 
 function duUpdate() {
+
+    // input-fields to change address
     let name = document.getElementById("du-name-id").value;
     let description = document.getElementById("du-description-id").value;
     let street = document.getElementById("du-street-id").value;
@@ -24,6 +25,10 @@ function duUpdate() {
     let state = document.getElementById("du-state-id").value;
     let lat = document.getElementById("du-lat-id").value;
     let lon = document.getElementById("du-lon-id").value;
+
+    selectedAddress.innerHTML = name + " " + description + " " + 
+                        street + " " + zip + " " + city + " " + 
+                        state + " " + lat + " " + lon + "<br><br>";
 
     selectedAddress.setAttribute('data-name', name);
     selectedAddress.setAttribute('data-description', description);
@@ -34,11 +39,8 @@ function duUpdate() {
     selectedAddress.setAttribute('data-lat', lat);
     selectedAddress.setAttribute('data-lon', lon);
 
-    selectedAddress.innerHTML = name + " " + description + " " + 
-                        street + " " + zip + " " + city + " " + 
-                        state + " " + lat + " " + lon + "<br><br>";
-      
-            
+    initMapMarker(lat, lon);
+    
     duToMain();
 }
 
@@ -49,8 +51,13 @@ function hcaUpdate(name,description,street,zip,city,state,lat,lon) {
 */
 
 function duDelete() {
-    selectedAddress.parentNode.removeChild(selectedAddress);
+    let lat = selectedAddress.getAttribute('data-lat');
+    let lon = selectedAddress.getAttribute('data-lon');
 
+    deleteMapMarker(lat, lon);
+
+    selectedAddress.parentNode.removeChild(selectedAddress);
+    
     duToMain();
 }
 

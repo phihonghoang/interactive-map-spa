@@ -1,29 +1,31 @@
 
 let selectedAddress;
 
-document.getElementById("addForm").onsubmit = addAddress;
+document.getElementById("addForm").onsubmit = addUpdate;
 
 document.getElementById("add-cancel-id").onclick = addToMain;
 
-
-function addAddress(e) {
+// adds location from input to the container.
+function addUpdate(e) {
 
     e.preventDefault();
 
-    let name = document.getElementById("add-name-id").value;
-    let description = document.getElementById("add-description-id").value;
-    let street = document.getElementById("add-street-id").value;
-    let zip = document.getElementById("add-zip-id").value;
-    let city = document.getElementById("add-city-id").value;
-    let state = document.getElementById("add-state-id").value;
-    let lat = document.getElementById("add-lat-id").value;
-    let lon = document.getElementById("add-lon-id").value;
+    let addName = document.getElementById("add-name-id").value;
+    let addDescription = document.getElementById("add-description-id").value;
+    let addStreet = document.getElementById("add-street-id").value;
+    let addZip = document.getElementById("add-zip-id").value;
+    let addCity = document.getElementById("add-city-id").value;
+    let addState = document.getElementById("add-state-id").value;
+    let addLat = document.getElementById("add-lat-id").value;
+    let addLon = document.getElementById("add-lon-id").value;
 
-    addAddressToContainer(name,description,street,zip,city,state,lat,lon);
-    emptyAddAddress();
+    addAddressToContainer(addName,addDescription,addStreet,addZip,addCity,addState,addLat,addLon);
+    emptyAddInputAddress();
+    addToMain();
 }
 
-// adds address to the "main-map-address-container-id" and an addEventListener
+// creates dynamically a div-element for user-input.
+// hardCodedAddresses and inputAddress are using this method.
 function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     // parameter = name of the element to be created.
     let address = document.createElement("div");
@@ -31,6 +33,7 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
                         street + " " + zip + " " + city + " " +
                         state + " " + lat + " " + lon + "<br><br>";
 
+    
     address.setAttribute('data-name', name);
     address.setAttribute('data-description', description);
     address.setAttribute('data-street', street);
@@ -39,31 +42,25 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     address.setAttribute('data-state', state);
     address.setAttribute('data-lat', lat);
     address.setAttribute('data-lon', lon);
-
-    /*
-    let name = address.getAttribute('data-name');
-    let description = address.getAttribute('data-description');
-    let street = address.getAttribute('data-street');
-    let zip = address.getAttribute('data-zip');
-    let city = address.getAttribute('data-city');
-    let state = address.getAttribute('data-state');
-    let lat = address.getAttribute('data-lat');
-    let lon = address.getAttribute('data-lon');
-    */
+    
+    initMapMarker(lat, lon);
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
     address.addEventListener("click", function(){
-        addToDuValues(address.getAttribute('data-name'),
-        address.getAttribute('data-description'),
-        address.getAttribute('data-street'),
-        address.getAttribute('data-zip'),
-        address.getAttribute('data-city'),
-        address.getAttribute('data-state'),
-        address.getAttribute('data-lat'),
-        address.getAttribute('data-lon'));
-        addToDu();
+        // Any changes
+        let addressName = address.getAttribute('data-name');
+        let addressDescription = address.getAttribute('data-description');
+        let addressStreet = address.getAttribute('data-street');
+        let addressZip = address.getAttribute('data-zip');
+        let addressCity = address.getAttribute('data-city');
+        let addressState = address.getAttribute('data-state');
+        let addressLat = address.getAttribute('data-lat');
+        let addressLon = address.getAttribute('data-lon');
 
+        addToDuValues(addressName,addressDescription,addressStreet,addressZip,addressCity,addressState,addressLat,addressLon);
+        addToDu();
+        deleteMapMarker(addressLat, addressLon);
         // both variables are sharing the same object.
         // it's a reference, any changes made in selectedAddress applies to address too.
         selectedAddress = address;
@@ -91,7 +88,7 @@ function addToDu() {
     document.getElementById("delete-update-container-id").style.display = "";
 }
 
-function emptyAddAddress() {
+function emptyAddInputAddress() {
     // Empty the input fields.
     document.getElementById("add-name-id").value = "";
     document.getElementById("add-description-id").value = "";

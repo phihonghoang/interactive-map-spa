@@ -1,3 +1,6 @@
+// empty object
+let marker = {};
+
 let mapOptions = {
     center:[52.5187,13.3855],
     zoom:10
@@ -9,12 +12,21 @@ let layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 map.addLayer(layer);
 
 
-function initMapMarkers() {
-    let marker1 = new L.Marker([hkw1.lat, hkw1.lon]);
-    let marker2 = new L.Marker([hkw2.lat, hkw2.lon]);
-    let marker3 = new L.Marker([hkw3.lat, hkw3.lon]);
+function initMapMarker(lat, lon) {
+    let key = lat + '_' + lon;
+    marker[key] = new L.Marker([lat, lon]);
+    marker[key].addTo(map);
+}
 
-    marker1.addTo(map);
-    marker2.addTo(map);
-    marker3.addTo(map);
+function deleteMapMarker(lat, lon) {
+    /*
+    if (marker[key]) {
+        map.removeLayer(marker[key]);
+        console.log("GELÖSCHT!");
+    }
+    */
+
+    let key = lat + '_' + lon;
+
+    map.removeLayer(marker[key]);
 }
