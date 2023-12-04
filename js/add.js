@@ -27,12 +27,28 @@ function addUpdate(e) {
 // creates dynamically a div-element for user-input.
 // hardCodedAddresses and inputAddress are using this method.
 function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
+
+    // doesn't request for geo coordination, if lat and lon are given.
+    if (lat != "" && lon != "") {
+        initMapMarker(lat,lon);
+        console.log("GO initMapMarker");
+    } else {
+        reqGeoCor(street,zip,city,state);
+        console.log("GO reqGeoCor");
+    }
+
     // parameter = name of the element to be created.
     let address = document.createElement("div");
-    address.innerHTML = name + " " + description + " " + 
+    setTimeout(() => {
+        address.innerHTML = name + " " + description + " " + 
                         street + " " + zip + " " + city + " " +
-                        state + " " + lat + " " + lon + "<br><br>";
+                        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
+    
 
+        address.setAttribute('data-lat', lastAddedLat);
+        address.setAttribute('data-lon', lastAddedLon);
+
+    }, 5000);
     
     address.setAttribute('data-name', name);
     address.setAttribute('data-description', description);
@@ -40,15 +56,8 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     address.setAttribute('data-zip', zip);
     address.setAttribute('data-city', city);
     address.setAttribute('data-state', state);
-    address.setAttribute('data-lat', lat);
-    address.setAttribute('data-lon', lon);
+    // requested geo coordinates from map.js
 
-    // doesn't request for geo coordination, if lat and lon are given.
-    if (lat != "" && lon != "") {
-        initMapMarker(lat,lon);
-    } else {
-        reqGeoCor(street,zip,city,state);
-    }
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
@@ -65,7 +74,10 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
 
         addToDuValues(addressName,addressDescription,addressStreet,addressZip,addressCity,addressState,addressLat,addressLon);
         addToDu();
-        deleteMapMarker(addressLat, addressLon);
+
+        currentLat = addressLat;
+        currentLon = addressLon;
+        
         // both variables are sharing the same object.
         // it's a reference, any changes made in selectedAddress applies to address too.
         selectedAddress = address;
@@ -73,6 +85,7 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
     
 
     document.getElementById("main-map-address-container-id").appendChild(address);
+
 }
 
 function addToDuValues(name,description,street,zip,city,state,lat,lon) {

@@ -16,6 +16,8 @@ document.getElementById("du-cancel-id").onclick = duToMain;
 
 function duUpdate() {
 
+    //deleteMapMarker(addressLat, addressLon);
+
     // input-fields to change address
     let name = document.getElementById("du-name-id").value;
     let description = document.getElementById("du-description-id").value;
@@ -39,18 +41,24 @@ function duUpdate() {
     selectedAddress.setAttribute('data-lat', lat);
     selectedAddress.setAttribute('data-lon', lon);
 
-    initMapMarker(lat, lon);
+    //updateMapMarker(lat,lon);
+    //initMapMarker(lat, lon);
+
+    deleteMapMarker(currentLat, currentLon);
+    initMapMarker(lat,lon);
     
     duToMain();
 }
 
 function duDelete() {
+    
     let lat = selectedAddress.getAttribute('data-lat');
     let lon = selectedAddress.getAttribute('data-lon');
 
     deleteMapMarker(lat, lon);
-
+    
     selectedAddress.parentNode.removeChild(selectedAddress);
+    
     
     duToMain();
 }
