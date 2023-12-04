@@ -9,6 +9,8 @@
     <script src="js/main.js" defer></script>
     <script src="js/add.js" defer></script>
     <script src="js/du.js" defer></script>
+    <script src="js/details.js" defer></script>
+	
 
     <!--Leaflet library-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -72,6 +74,30 @@
     </div>
 
 
+<!--column-->
+    <div class="normalo-main-container" id="normalo-main-container-id">
+         <div class="normalo-welcome-message-container">
+            <h1>Welcome</h1>
+        </div>
+        <!--row-->
+        <div class="normalo-main-content-container">
+            <div class="normalo-main-map-address-container" id="normalo-main-map-address-container-id">
+                <!--
+                <p>Heizkraftwerk Köpenicker Str. 60, 10179 Berlin </p>
+                <p>Heizkraftwerk Allee der Kosmonauten 26b, 12681 Berlin</p>
+                <p>Heizkraftwerk Forckenbeckstraße 3-5, 14199 Berlin</p>
+                -->
+            </div>
+            <div id="<main-map">
+ 
+            </div>
+        </div>
+        <div class="normalo-main-input-container">
+           <input type="button" id="normalo-main-logout-id" value="Logout">
+        </div>
+    </div>
+
+
     <div class="add-container" id="add-container-id">
         <form id="addForm">
             <div class="add-content-container">
@@ -113,13 +139,13 @@
     
                 <div class="add-lat-container">
                     <label for="lat">Lat</label>
-                    <input type="number" name="lat" id="add-lat-id">
+                    <input type="number" name="lat" id="add-lat-id" step="any">
                 </div>
     
     
                 <div class="add-lon-container">
                     <label for="lon">Lon</label>
-                    <input type="number" name="lon" id="add-lon-id">
+                    <input type="number" name="lon" id="add-lon-id" step="any">
                 </div>
             </div>
             
@@ -172,13 +198,12 @@
     
                 <div class="du-lat-container">
                     <label for="lat">Lat</label>
-                    <input type="number" name="lat" id="du-lat-id">
+                    <input type="number" name="lat" id="du-lat-id" step="any">
                 </div>
-    
     
                 <div class="du-lon-container">
                     <label for="lon">Lon</label>
-                    <input type="number" name="lon" id="du-lon-id">
+                    <input type="number" name="lon" id="du-lon-id" step="any">
                 </div>
             </div>
             
@@ -190,6 +215,65 @@
         </form>
     </div>
     
+
+<div class="details-container" id="details-container-id">
+        <div class="details-content-container">
+
+            <div>
+                <h2>Details</h2>
+            </div>
+
+            <form id="detailForm">
+                <div class="details-name-container">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="details-name-id">
+                </div>
+    
+                <div class="details-description-container">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" id="details-description-id">
+                </div>
+    
+                <div class="details-street-container">
+                    <label for="street">Street</label>
+                    <input type="text" name="street" id="details-street-id">
+                </div>
+    
+                <div class="details-zip-container">
+                    <label for="zip">Zip</label>
+                    <input type="number" name="zip" id="details-zip-id">
+                </div>
+                    
+                <div class="details-city-container">
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="details-city-id">
+                </div>
+                    
+    
+                <div class="details-state-container">
+                    <label for="state">State</label>
+                    <input type="text" name="state" id="details-state-id">
+                </div>
+    
+                <div class="details-lat-container">
+                    <label for="lat">Lat</label>
+                    <input type="number" name="lat" id="details-lat-id" step="any">
+                </div>
+    
+                <div class="details-lon-container">
+                    <label for="lon">Lon</label>
+                    <input type="number" name="lon" id="details-lon-id" step="any">
+                </div>
+            </div>
+            
+            <div class="details-input-container">
+                <input type="button" value="Close" id="details-close-id">
+            </div>
+        </form>
+    </div>
+    
+
+
     <footer class="footer-container">
         <div class="footer-content-container">
             <p>
