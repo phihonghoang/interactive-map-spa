@@ -36,7 +36,7 @@ function duUpdate() {
             setSelectedAddress(name, description, street, zip, city, state, lat, lon);
             duToMain();
         }
-    }, 2000);
+    }, 1000);
 }
 
 function setSelectedAddress(name, description, street, zip, city, state, lat, lon) {
