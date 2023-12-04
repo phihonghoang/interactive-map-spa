@@ -10,6 +10,12 @@ const admin = {
     role: "admin"
 };
 
+const normalo = {
+    username: "normalo",
+    password: "password",
+    role: "guest"
+};
+
 
 const initScreensAddEventHandlers = function () {
     if (userIsLoggedIn === false) {
@@ -34,11 +40,19 @@ function checkLogin(e) {
     const passwordEntered = document.getElementById("login-password-id").value;
 
     if (admin.username === loginEntered && admin.password == passwordEntered) {
+
         userIsLoggedIn = true
         hideLogin();
+        document.getElementById("main-add-id").style.display = "";
+    } else if ((normalo.username === loginEntered && normalo.password == passwordEntered)){
+
+        userIsLoggedIn = true
+        hideLogin();
+        document.getElementById("main-add-id").style.display = "none";
     } else {
-        alert("Incorrect username or password!")
+
         userIsLoggedIn = false;
+        alert("Incorrect username or password!")
     }
 }
 
