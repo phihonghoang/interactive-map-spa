@@ -95,6 +95,7 @@ function hardCodedAddresses() {
     let hkwList = [hkw1, hkw2, hkw3];
     
     hkwList.forEach((value) => {
+        initMapMarker(value.lat, value.lon);
         addAddressToContainer(value.name,value.description,value.street,value.zip,value.city,value.state,value.lat,value.lon);
     });
 }

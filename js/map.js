@@ -4,11 +4,7 @@ let marker = {};
 // lat and lon of the last added address.
 let lastAddedLat;
 let lastAddedLon;
- 
-// lat and lon of the current address.
-// address.addEventListener("click", function {});
-let currentLat;
-let currentLon;
+
 
 let mapOptions = {
     center: [52.5187, 13.3855],
@@ -28,10 +24,11 @@ function initMapMarker(lat, lon) {
     marker[key] = new L.Marker([lat, lon]);
     marker[key].addTo(map);
 
-    
+
     lastAddedLat = lat;
     lastAddedLon = lon;
 }
+
 
 function deleteMapMarker(lat, lon) {
     let key = lat + '_' + lon;
@@ -39,7 +36,8 @@ function deleteMapMarker(lat, lon) {
     delete marker[key];
 }
 
-function reqGeoCor(street, zip, city, state, callback) {
+
+function reqGeoCor(street, zip, city, state) {
 
     //var adresse = "Rupprechtstraße 10A, 10317 Berlin, Germany";
     let address = street + ", " + zip + " " + city + ", " + state;
@@ -54,9 +52,12 @@ function reqGeoCor(street, zip, city, state, callback) {
                 let lat = data[0].lat;
                 let lon = data[0].lon;
 
-                initMapMarker(lat, lon)
+                reqAddress = true;
+                initMapMarker(lat, lon);
             } else {
                 console.error('Keine Ergebnisse für die Adresse gefunden.');
+                reqAddress = false;
+                alert("Keine Ergebnisse für die Adresse gefunden.")
             }
         })
         .catch(error => {

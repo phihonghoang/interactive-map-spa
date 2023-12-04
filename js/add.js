@@ -1,6 +1,8 @@
 
 let selectedAddress;
 
+let reqAddress;
+
 document.getElementById("addForm").onsubmit = addUpdate;
 
 document.getElementById("add-cancel-id").onclick = addToMain;
@@ -19,67 +21,45 @@ function addUpdate(e) {
     let addLat = document.getElementById("add-lat-id").value;
     let addLon = document.getElementById("add-lon-id").value;
 
-    addAddressToContainer(addName, addDescription, addStreet, addZip, addCity, addState, addLat, addLon);
-    emptyAddInputAddress();
-    addToMain();
+    reqGeoCor(addStreet, addZip, addCity, addState);
+    console.log("GO reqGeoCor");
+
+    // waits for a time until the values in the reqGeoCor function are finished.
+    setTimeout(() => {
+        if (reqAddress === true) {
+            addAddressToContainer(addName, addDescription, addStreet, addZip, addCity, addState, addLat, addLon);
+            addToMain();
+        }
+    }, 1000);
 }
 
 // creates dynamically a div-element for user-input.
 // hardCodedAddresses and inputAddress are using this method.
 function addAddressToContainer(name, description, street, zip, city, state, lat, lon) {
 
-    let requestedAddress = false;
-
-    // doesn't request for geo coordination, if lat and lon are given.
+    /*
+    // sets the markers on the map for the hard coded addresses.
     if (lat != "" && lon != "") {
         initMapMarker(lat, lon);
         console.log("GO initMapMarker");
-    } else {
-        reqGeoCor(street, zip, city, state);
-        console.log("GO reqGeoCor");
-        requestedAddress = true;
     }
-
+    */
 
     let address = document.createElement("div");
 
-    if (requestedAddress === true) {
-        setTimeout(() => {
-            address.innerHTML = name + " " + description + " " +
-                street + " " + zip + " " + city + " " +
-                state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
+    address.innerHTML = name + " " + description + " " +
+        street + " " + zip + " " + city + " " +
+        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
 
-            address.setAttribute('data-name', name);
-            address.setAttribute('data-description', description);
-            address.setAttribute('data-street', street);
-            address.setAttribute('data-zip', zip);
-            address.setAttribute('data-city', city);
-            address.setAttribute('data-state', state);
-            // requested geo coordinates from map.js
-            address.setAttribute('data-lat', lastAddedLat);
-            address.setAttribute('data-lon', lastAddedLon);
-            address.setAttribute('data-lat', lastAddedLat);
-            address.setAttribute('data-lon', lastAddedLon);
-        }, 5000);
-    } else {
-        address.innerHTML = name + " " + description + " " +
-            street + " " + zip + " " + city + " " +
-            state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
-
-
-        address.setAttribute('data-name', name);
-        address.setAttribute('data-description', description);
-        address.setAttribute('data-street', street);
-        address.setAttribute('data-zip', zip);
-        address.setAttribute('data-city', city);
-        address.setAttribute('data-state', state);
-        // requested geo coordinates from map.js
-        address.setAttribute('data-lat', lastAddedLat);
-        address.setAttribute('data-lon', lastAddedLon);
-        address.setAttribute('data-lat', lastAddedLat);
-        address.setAttribute('data-lon', lastAddedLon);
-    }
-
+    address.setAttribute('data-name', name);
+    address.setAttribute('data-description', description);
+    address.setAttribute('data-street', street);
+    address.setAttribute('data-zip', zip);
+    address.setAttribute('data-city', city);
+    address.setAttribute('data-state', state);
+    // requested geo coordinates from map.js
+    address.setAttribute('data-lat', lastAddedLat);
+    address.setAttribute('data-lon', lastAddedLon);
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
@@ -97,9 +77,6 @@ function addAddressToContainer(name, description, street, zip, city, state, lat,
         addToDuValues(addressName, addressDescription, addressStreet, addressZip, addressCity, addressState, addressLat, addressLon);
         addToDu();
 
-        currentLat = addressLat;
-        currentLon = addressLon;
-
         // both variables are sharing the same object.
         // it's a reference, any changes made in selectedAddress applies to address too.
         selectedAddress = address;
@@ -107,26 +84,8 @@ function addAddressToContainer(name, description, street, zip, city, state, lat,
 
 
     document.getElementById("main-map-address-container-id").appendChild(address);
-
 }
 
-function createAddress() {
-    // parameter = name of the element to be created.
-    let address = document.createElement("div");
-    address.innerHTML = name + " " + description + " " +
-        street + " " + zip + " " + city + " " +
-        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
-
-    address.setAttribute('data-name', name);
-    address.setAttribute('data-description', description);
-    address.setAttribute('data-street', street);
-    address.setAttribute('data-zip', zip);
-    address.setAttribute('data-city', city);
-    address.setAttribute('data-state', state);
-    // requested geo coordinates from map.js
-    address.setAttribute('data-lat', lastAddedLat);
-    address.setAttribute('data-lon', lastAddedLon);
-}
 
 function addToDuValues(name, description, street, zip, city, state, lat, lon) {
     document.getElementById("du-name-id").value = name;
@@ -146,6 +105,15 @@ function addToDu() {
     document.getElementById("delete-update-container-id").style.display = "";
 }
 
+function addToMain() {
+    document.getElementById("login-container-id").style.display = "none";
+    document.getElementById("main-container-id").style.display = "";
+    document.getElementById("add-container-id").style.display = "none";
+    document.getElementById("delete-update-container-id").style.display = "none";
+
+    emptyAddInputAddress();
+}
+
 function emptyAddInputAddress() {
     // Empty the input fields.
     document.getElementById("add-name-id").value = "";
@@ -156,11 +124,4 @@ function emptyAddInputAddress() {
     document.getElementById("add-state-id").value = "";
     document.getElementById("add-lat-id").value = "";
     document.getElementById("add-lon-id").value = "";
-}
-
-function addToMain() {
-    document.getElementById("login-container-id").style.display = "none";
-    document.getElementById("main-container-id").style.display = "";
-    document.getElementById("add-container-id").style.display = "none";
-    document.getElementById("delete-update-container-id").style.display = "none";
 }

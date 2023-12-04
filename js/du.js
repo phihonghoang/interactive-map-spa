@@ -1,12 +1,12 @@
 
-document.getElementById("duForm").addEventListener("submit", function(e) {
+document.getElementById("duForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     if (e.submitter.id === "du-update-id") {
         duUpdate();
     }
-    
-    if(e.submitter.id === "du-delete-id") {
+
+    if (e.submitter.id === "du-delete-id") {
         duDelete();
     }
 });
@@ -16,7 +16,7 @@ document.getElementById("du-cancel-id").onclick = duToMain;
 
 function duUpdate() {
 
-    //deleteMapMarker(addressLat, addressLon);
+    //deleteMapMarker(currentLat, currentLon);
 
     // input-fields to change address
     let name = document.getElementById("du-name-id").value;
@@ -28,9 +28,21 @@ function duUpdate() {
     let lat = document.getElementById("du-lat-id").value;
     let lon = document.getElementById("du-lon-id").value;
 
-    selectedAddress.innerHTML = name + " " + description + " " + 
-                        street + " " + zip + " " + city + " " + 
-                        state + " " + lat + " " + lon + "<br><br>";
+    reqGeoCor(street, zip, city, state);
+
+    setTimeout(() => {
+        if (reqAddress === true) {
+            deleteMapMarker(lat, lon);
+            setSelectedAddress(name, description, street, zip, city, state, lat, lon);
+            duToMain();
+        }
+    }, 2000);
+}
+
+function setSelectedAddress(name, description, street, zip, city, state, lat, lon) {
+    selectedAddress.innerHTML = name + " " + description + " " +
+        street + " " + zip + " " + city + " " +
+        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
 
     selectedAddress.setAttribute('data-name', name);
     selectedAddress.setAttribute('data-description', description);
@@ -38,28 +50,18 @@ function duUpdate() {
     selectedAddress.setAttribute('data-zip', zip);
     selectedAddress.setAttribute('data-city', city);
     selectedAddress.setAttribute('data-state', state);
-    selectedAddress.setAttribute('data-lat', lat);
-    selectedAddress.setAttribute('data-lon', lon);
-
-    //updateMapMarker(lat,lon);
-    //initMapMarker(lat, lon);
-
-    deleteMapMarker(currentLat, currentLon);
-    initMapMarker(lat,lon);
-    
-    duToMain();
+    selectedAddress.setAttribute('data-lat', lastAddedLat);
+    selectedAddress.setAttribute('data-lon', lastAddedLon);
 }
 
 function duDelete() {
-    
+
     let lat = selectedAddress.getAttribute('data-lat');
     let lon = selectedAddress.getAttribute('data-lon');
 
     deleteMapMarker(lat, lon);
-    
     selectedAddress.parentNode.removeChild(selectedAddress);
-    
-    
+
     duToMain();
 }
 
