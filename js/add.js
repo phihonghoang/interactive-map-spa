@@ -37,14 +37,6 @@ function addUpdate(e) {
 // hardCodedAddresses and inputAddress are using this method.
 function addAddressToContainer(name, description, street, zip, city, state, lat, lon) {
 
-    /*
-    // sets the markers on the map for the hard coded addresses.
-    if (lat != "" && lon != "") {
-        initMapMarker(lat, lon);
-        console.log("GO initMapMarker");
-    }
-    */
-
     let address = document.createElement("div");
 
     address.innerHTML = name + " " + description + " " +
@@ -99,6 +91,15 @@ function addToDuValues(name, description, street, zip, city, state, lat, lon) {
 }
 
 function addToDu() {
+
+    if (normaloLoggedIn === true) {
+        document.getElementById("du-update-id").style.display = "none";
+        document.getElementById("du-delete-id").style.display = "none";
+    } else {
+        document.getElementById("du-update-id").style.display = "";
+        document.getElementById("du-delete-id").style.display = "";
+    }
+
     document.getElementById("login-container-id").style.display = "none";
     document.getElementById("main-container-id").style.display = "none";
     document.getElementById("add-container-id").style.display = "none";

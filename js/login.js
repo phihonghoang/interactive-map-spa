@@ -1,5 +1,6 @@
 
 let userIsLoggedIn = false;
+let normaloLoggedIn = false;
 
 // global variable
 let hkw1, hkw2, hkw3;
@@ -7,13 +8,13 @@ let hkw1, hkw2, hkw3;
 const admin = {
     username: "admin",
     password: "password",
-    role: "admin"
+    role: "admin",
 };
 
 const normalo = {
     username: "normalo",
     password: "password",
-    role: "guest"
+    role: "guest",
 };
 
 
@@ -41,12 +42,14 @@ function checkLogin(e) {
 
     if (admin.username === loginEntered && admin.password == passwordEntered) {
 
-        userIsLoggedIn = true
+        userIsLoggedIn = true;
+        normaloLoggedIn = false;
         hideLogin();
         document.getElementById("main-add-id").style.display = "";
     } else if ((normalo.username === loginEntered && normalo.password == passwordEntered)){
 
-        userIsLoggedIn = true
+        userIsLoggedIn = true;
+        normaloLoggedIn = true;
         hideLogin();
         document.getElementById("main-add-id").style.display = "none";
     } else {
@@ -57,12 +60,10 @@ function checkLogin(e) {
 }
 
 function showLogin() {
-    /*
     document.getElementById("login-container-id").style.display = "";
     document.getElementById("main-container-id").style.display = "none";
     document.getElementById("add-container-id").style.display = "none";
     document.getElementById("delete-update-container-id").style.display = "none";
-    */
 }
 
 function hideLogin() {
