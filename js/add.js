@@ -19,49 +19,71 @@ function addUpdate(e) {
     let addLat = document.getElementById("add-lat-id").value;
     let addLon = document.getElementById("add-lon-id").value;
 
-    addAddressToContainer(addName,addDescription,addStreet,addZip,addCity,addState,addLat,addLon);
+    addAddressToContainer(addName, addDescription, addStreet, addZip, addCity, addState, addLat, addLon);
     emptyAddInputAddress();
     addToMain();
 }
 
 // creates dynamically a div-element for user-input.
 // hardCodedAddresses and inputAddress are using this method.
-function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
+function addAddressToContainer(name, description, street, zip, city, state, lat, lon) {
+
+    let requestedAddress = false;
 
     // doesn't request for geo coordination, if lat and lon are given.
     if (lat != "" && lon != "") {
-        initMapMarker(lat,lon);
+        initMapMarker(lat, lon);
         console.log("GO initMapMarker");
     } else {
-        reqGeoCor(street,zip,city,state);
+        reqGeoCor(street, zip, city, state);
         console.log("GO reqGeoCor");
+        requestedAddress = true;
     }
 
-    // parameter = name of the element to be created.
-    let address = document.createElement("div");
-    setTimeout(() => {
-        address.innerHTML = name + " " + description + " " + 
-                        street + " " + zip + " " + city + " " +
-                        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
-    
 
+    let address = document.createElement("div");
+
+    if (requestedAddress === true) {
+        setTimeout(() => {
+            address.innerHTML = name + " " + description + " " +
+                street + " " + zip + " " + city + " " +
+                state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
+
+            address.setAttribute('data-name', name);
+            address.setAttribute('data-description', description);
+            address.setAttribute('data-street', street);
+            address.setAttribute('data-zip', zip);
+            address.setAttribute('data-city', city);
+            address.setAttribute('data-state', state);
+            // requested geo coordinates from map.js
+            address.setAttribute('data-lat', lastAddedLat);
+            address.setAttribute('data-lon', lastAddedLon);
+            address.setAttribute('data-lat', lastAddedLat);
+            address.setAttribute('data-lon', lastAddedLon);
+        }, 5000);
+    } else {
+        address.innerHTML = name + " " + description + " " +
+            street + " " + zip + " " + city + " " +
+            state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
+
+
+        address.setAttribute('data-name', name);
+        address.setAttribute('data-description', description);
+        address.setAttribute('data-street', street);
+        address.setAttribute('data-zip', zip);
+        address.setAttribute('data-city', city);
+        address.setAttribute('data-state', state);
+        // requested geo coordinates from map.js
         address.setAttribute('data-lat', lastAddedLat);
         address.setAttribute('data-lon', lastAddedLon);
-
-    }, 5000);
-    
-    address.setAttribute('data-name', name);
-    address.setAttribute('data-description', description);
-    address.setAttribute('data-street', street);
-    address.setAttribute('data-zip', zip);
-    address.setAttribute('data-city', city);
-    address.setAttribute('data-state', state);
-    // requested geo coordinates from map.js
+        address.setAttribute('data-lat', lastAddedLat);
+        address.setAttribute('data-lon', lastAddedLon);
+    }
 
 
     // the anonymous function acts as a wrapper.
     // this enables the expected delay in the execution of the function until the event.
-    address.addEventListener("click", function(){
+    address.addEventListener("click", function () {
         // Any changes
         let addressName = address.getAttribute('data-name');
         let addressDescription = address.getAttribute('data-description');
@@ -72,23 +94,41 @@ function addAddressToContainer(name,description,street,zip,city,state,lat,lon) {
         let addressLat = address.getAttribute('data-lat');
         let addressLon = address.getAttribute('data-lon');
 
-        addToDuValues(addressName,addressDescription,addressStreet,addressZip,addressCity,addressState,addressLat,addressLon);
+        addToDuValues(addressName, addressDescription, addressStreet, addressZip, addressCity, addressState, addressLat, addressLon);
         addToDu();
 
         currentLat = addressLat;
         currentLon = addressLon;
-        
+
         // both variables are sharing the same object.
         // it's a reference, any changes made in selectedAddress applies to address too.
         selectedAddress = address;
     });
-    
+
 
     document.getElementById("main-map-address-container-id").appendChild(address);
 
 }
 
-function addToDuValues(name,description,street,zip,city,state,lat,lon) {
+function createAddress() {
+    // parameter = name of the element to be created.
+    let address = document.createElement("div");
+    address.innerHTML = name + " " + description + " " +
+        street + " " + zip + " " + city + " " +
+        state + " " + lastAddedLat + " " + lastAddedLon + "<br><br>";
+
+    address.setAttribute('data-name', name);
+    address.setAttribute('data-description', description);
+    address.setAttribute('data-street', street);
+    address.setAttribute('data-zip', zip);
+    address.setAttribute('data-city', city);
+    address.setAttribute('data-state', state);
+    // requested geo coordinates from map.js
+    address.setAttribute('data-lat', lastAddedLat);
+    address.setAttribute('data-lon', lastAddedLon);
+}
+
+function addToDuValues(name, description, street, zip, city, state, lat, lon) {
     document.getElementById("du-name-id").value = name;
     document.getElementById("du-description-id").value = description;
     document.getElementById("du-street-id").value = street;
