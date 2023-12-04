@@ -39,28 +39,25 @@ function deleteMapMarker(lat, lon) {
 
 function reqGeoCor(street, zip, city, state) {
 
-    //var adresse = "Rupprechtstraße 10A, 10317 Berlin, Germany";
     let address = street + ", " + zip + " " + city + ", " + state;
     let nominatimUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
-    // Führe die Anfrage durch
     fetch(nominatimUrl)
         .then(response => response.json())
         .then(data => {
             if (data.length > 0) {
-                // Extrahiere Längen- und Breitengrade aus der Antwort
                 let lat = data[0].lat;
                 let lon = data[0].lon;
 
                 reqAddress = true;
                 initMapMarker(lat, lon);
             } else {
-                console.error('Keine Ergebnisse für die Adresse gefunden.');
                 reqAddress = false;
-                alert("Keine Ergebnisse für die Adresse gefunden.")
+                alert("No results found.")
+                console.error("No results found.");
             }
         })
         .catch(error => {
-            console.error('Fehler bei der Geokodierung:', error);
+            console.error("Error in geocoding:", error);
         });
 }

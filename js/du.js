@@ -16,8 +16,6 @@ document.getElementById("du-cancel-id").onclick = duToMain;
 
 function duUpdate() {
 
-    //deleteMapMarker(currentLat, currentLon);
-
     // input-fields to change address
     let name = document.getElementById("du-name-id").value;
     let description = document.getElementById("du-description-id").value;
