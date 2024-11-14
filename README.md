@@ -16,3 +16,8 @@ This SPA consists of four main sections:
 - **Guest Access** – Guests can log in and view the interactive map, but they cannot add or delete locations.
 - **Admin Access** – Admin users have full control, with the ability to add new locations to the map and delete existing ones.
 - **Real-time Updates** – Locations added or removed by the admin are dynamically displayed on the map and in the address list.
+
+## Technology Stack
+
+- **Frontend**: HTML, CSS, JavaScript
+- **Map Library**: [Leaflet](https://leafletjs.com/) – used to render the interactive map and manage location markers.
