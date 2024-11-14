@@ -11,7 +11,7 @@ This SPA consists of four main sections:
 3. **Add Location Page** (Admin-only) – Allows admins to add real-world locations to the map, which will appear both on the map itself and in a list beside it.
 4. **Delete Location Page** (Admin-only) – Enables admins to remove locations from the map and the location list.
 
-### Features
+## Features
 
 - **Guest Access** – Guests can log in and view the interactive map, but they cannot add or delete locations.
 - **Admin Access** – Admin users have full control, with the ability to add new locations to the map and delete existing ones.
