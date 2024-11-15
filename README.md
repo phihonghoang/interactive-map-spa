@@ -2,7 +2,7 @@
 
 A single-page application (SPA) prototype built with HTML, CSS, and JavaScript. The application provides an interactive map experience with different access levels for guest and admin users.
 
-## Project Overview
+## Overview
 
 This SPA consists of four main sections:
 
@@ -21,3 +21,10 @@ This SPA consists of four main sections:
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Map Library**: [Leaflet](https://leafletjs.com/) – used to render the interactive map and manage location markers.
+
+## How to Run
+
+1. Clone the repository.
+3. Open the project in your preferred code editor.
+4. Run the index.html file in a browser to launch the application.
+
