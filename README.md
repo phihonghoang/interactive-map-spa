@@ -1,4 +1,4 @@
-# Interactive Map SPA (Prototype)
+# Interactive Map SPA
 
 A single-page application (SPA) prototype built with HTML, CSS, and JavaScript. The application provides an interactive map experience with different access levels for guest and admin users.
 
